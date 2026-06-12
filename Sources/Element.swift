@@ -1981,7 +1981,7 @@ open class Element: Node {
     }
     
     private static func appendNormalisedText(_ accum: StringBuilder, _ textNode: TextNode) {
-        let text = textNode.wholeTextSlice()
+        let text = textNode.wholeTextSlice().toArraySlice()
         if Element.preserveWhitespace(textNode.parentNode) {
             accum.append(text)
             return
@@ -1997,7 +1997,7 @@ open class Element: Node {
     private static func appendNormalisedTextTracking(_ accum: StringBuilder,
                                                      _ textNode: TextNode,
                                                      lastWasWhite: inout Bool) {
-        let text = textNode.wholeTextSlice()
+        let text = textNode.wholeTextSlice().toArraySlice()
         if Element.preserveWhitespace(textNode.parentNode) {
             accum.append(text)
             if let last = text.last {
@@ -2018,7 +2018,7 @@ open class Element: Node {
                                                      _ textNode: TextNode,
                                                      lastWasWhite: inout Bool,
                                                      sawWhitespace: inout Bool) {
-        let text = textNode.wholeTextSlice()
+        let text = textNode.wholeTextSlice().toArraySlice()
         if Element.preserveWhitespace(textNode.parentNode) {
             accum.append(text)
             if let last = text.last {
